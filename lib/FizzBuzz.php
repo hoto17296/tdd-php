@@ -10,11 +10,9 @@ class FizzBuzz
     if ( $n % 3 === 0 ) {
       return 'Fizz';
     }
-    if ( $n === 1 ) {
-      return '1';
-    }
     if ( $n % 5 === 0 ) {
       return 'Buzz';
     }
+    return $n;
   }
 }

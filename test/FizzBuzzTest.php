@@ -3,9 +3,10 @@ require('lib/FizzBuzz.php');
 
 class FizzBuzzTest extends PHPUnit_Framework_TestCase
 {
-  public function test_1入れたら1()
+  public function test_3の倍数でも5の倍数でもなければそのまま返す()
   {
     $this->assertEquals('1', FizzBuzz::check(1));
+    $this->assertEquals('2', FizzBuzz::check(2));
   }
 
   public function test_3の倍数を入れたらFizz()
