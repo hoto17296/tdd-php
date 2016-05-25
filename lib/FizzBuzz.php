@@ -4,7 +4,10 @@ class FizzBuzz
 {
   public static function check($n)
   {
-    if ( $n === 3 ) {
+    if ( $n % 15 === 0 ) {
+      return 'FizzBuzz';
+    }
+    if ( $n % 3 === 0 ) {
       return 'Fizz';
     }
     if ( $n === 1 ) {
@@ -13,6 +16,5 @@ class FizzBuzz
     if ( $n === 5 ) {
       return 'Buzz';
     }
-    return 'FizzBuzz';
   }
 }

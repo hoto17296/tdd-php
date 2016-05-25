@@ -8,9 +8,10 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     $this->assertEquals('1', FizzBuzz::check(1));
   }
 
-  public function test_3入れたらFizz()
+  public function test_3の倍数を入れたらFizz()
   {
     $this->assertEquals('Fizz', FizzBuzz::check(3));
+    $this->assertEquals('Fizz', FizzBuzz::check(6));
   }
 
   public function test_5入れたらFizz()
