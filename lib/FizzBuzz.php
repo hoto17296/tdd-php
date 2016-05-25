@@ -2,8 +2,11 @@
 
 class FizzBuzz
 {
-  public static function check()
+  public static function check($n)
   {
-    return 'Fizz';
+    if ( $n === 3 ) {
+      return 'Fizz';
+    }
+    return '1';
   }
 }
