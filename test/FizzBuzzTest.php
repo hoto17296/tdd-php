@@ -1,5 +1,5 @@
 <?php
-require('lib/FizzBuzz.php');
+require_once('lib/FizzBuzz.php');
 
 class FizzBuzzTest extends PHPUnit_Framework_TestCase
 {

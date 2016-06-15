@@ -5,7 +5,7 @@ require('test/StdoutSpy.php');
 
 class CommandTest extends PHPUnit_Framework_TestCase
 {
-  public function test()
+  public function test_1を入力するとFizzBuzzが動く()
   {
     $stub = new StdinStub('3');
     $spy = new StdoutSpy();

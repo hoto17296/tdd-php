@@ -2,8 +2,13 @@
 
 class StdoutSpy
 {
+  public function output($val)
+  {
+    $this->result = $val;
+  }
+
   public function result()
   {
-    return 'Fizz';
+    return $this->result;
   }
 }
