@@ -9,10 +9,12 @@ class Command
     $this->stdout = $stdout;
   }
 
-  function run()
+  function run($mode)
   {
-    $input = (int)$this->stdin->gets();
-    $result = FizzBuzz::check($input);
-    $this->stdout->output($result);
+    if ( $mode === 1 ) {
+      $input = (int)$this->stdin->gets();
+      $result = FizzBuzz::check($input);
+      $this->stdout->output($result);
+    }
   }
 }

@@ -14,4 +14,13 @@ class CommandTest extends PHPUnit_Framework_TestCase
 
     $this->assertEquals('Fizz', $spy->result());
   }
+
+  public function test_100を入力すると何もしない()
+  {
+    $spy = new StdoutSpy();
+    $command = new Command(null, $spy);
+    $command->run(100);
+
+    $this->assertEquals(null, $spy->result());
+  }
 }
