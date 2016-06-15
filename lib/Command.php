@@ -11,7 +11,7 @@ class Command
 
   function run($mode)
   {
-    if ( $mode === 1 ) {
+    if ( $mode === '1' ) {
       $input = (int)$this->stdin->gets();
       $result = FizzBuzz::check($input);
       $this->stdout->output($result);

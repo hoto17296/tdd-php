@@ -10,14 +10,14 @@ class CommandTest extends PHPUnit_Framework_TestCase
     $stub = new StdinStub('3');
     $spy = new StdoutSpy();
     $command = new Command($stub, $spy);
-    $command->run(1);
+    $command->run('1');
 
     $this->assertEquals('Fizz', $spy->result());
   }
 
   public function test_想定されていない数値を入力すると何もしない()
   {
-    $wrong_mode = 100;
+    $wrong_mode = '100';
     $spy = new StdoutSpy();
     $command = new Command(null, $spy);
     $command->run($wrong_mode);
