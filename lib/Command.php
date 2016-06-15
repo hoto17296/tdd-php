@@ -13,11 +13,11 @@ class Command
   function run($mode)
   {
     if ( $mode === '1' ) {
-      $input = (int)$this->stdin->gets();
+      $input = $this->stdin->gets();
       if ( ! Validator::valid_number($input) ) {
         return;
       }
-      $result = FizzBuzz::check($input);
+      $result = FizzBuzz::check((int)$input);
       $this->stdout->output($result);
     }
   }
