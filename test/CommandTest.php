@@ -24,4 +24,15 @@ class CommandTest extends PHPUnit_Framework_TestCase
 
     $this->assertEquals(null, $spy->result());
   }
+
+  public function test_数値以外を入力すると何もしない()
+  {
+    $wrong_input = 'a';
+    $stub = new StdinStub($wrong_input);
+    $spy = new StdoutSpy();
+    $command = new Command($stub, $spy);
+    $command->run('1');
+
+    $this->assertEquals(null, $spy->result());
+  }
 }

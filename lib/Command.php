@@ -1,5 +1,6 @@
 <?php
 require_once('lib/FizzBuzz.php');
+require_once('lib/Validator.php');
 
 class Command
 {
@@ -13,6 +14,9 @@ class Command
   {
     if ( $mode === '1' ) {
       $input = (int)$this->stdin->gets();
+      if ( ! Validator::valid_number($input) ) {
+        return;
+      }
       $result = FizzBuzz::check($input);
       $this->stdout->output($result);
     }
