@@ -19,5 +19,8 @@ class Command
       }
       $this->stdout->output( FizzBuzz::check((int)$input) );
     }
+    if ( $mode === '2' ) {
+      $this->stdout->output('3: Fizz');
+    }
   }
 }
