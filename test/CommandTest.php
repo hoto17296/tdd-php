@@ -10,10 +10,22 @@ class CommandTest extends PHPUnit_Framework_TestCase
   {
     $stub = new StdinStub('3');
     $spy = new StdoutSpy();
-    $command = new Command($stub, $spy, null);
+    $logger = new Logger();
+    $command = new Command($stub, $spy, $logger);
     $command->run('1');
 
     $this->assertEquals(['Fizz'], $spy->result());
+  }
+
+  public function test_1を入力すると履歴が保存される()
+  {
+    $stub = new StdinStub('3');
+    $spy = new StdoutSpy();
+    $logger = new Logger();
+    $command = new Command($stub, $spy, $logger);
+    $command->run('1');
+
+    $this->assertEquals(['3: Fizz'], $logger->get());
   }
 
   public function test_想定されていない数値を入力すると何もしない()

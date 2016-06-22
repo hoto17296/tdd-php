@@ -19,6 +19,7 @@ class Command
         return;
       }
       $this->stdout->output( FizzBuzz::check((int)$input) );
+      $this->logger->add( $input . ': ' . FizzBuzz::check((int)$input) );
     }
     if ( $mode === '2' ) {
       foreach ( $this->logger->get() as $line ) {
