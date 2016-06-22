@@ -1,5 +1,6 @@
 <?php
 require_once 'lib/Command.php';
+require_once 'lib/Logger.php';
 
 class Stdin
 {
@@ -17,13 +18,13 @@ class Stdout
   }
 }
 
+$command = new Command( new Stdin(), new Stdout(), new Logger() );
+
 while (true) {
   $stdin = trim(fgets(STDIN));
   if ( ! is_numeric($stdin) ) { continue; }
 
   if ( $stdin === '0' ) { exit; }
-
-  $command = new Command( new Stdin(), new Stdout() );
 
   $command->run($stdin);
 }
