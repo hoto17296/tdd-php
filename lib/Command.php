@@ -17,8 +17,7 @@ class Command
       if ( ! Validator::valid_number($input) ) {
         return;
       }
-      $result = FizzBuzz::check((int)$input);
-      $this->stdout->output($result);
+      $this->stdout->output( FizzBuzz::check((int)$input) );
     }
   }
 }
