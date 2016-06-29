@@ -4,10 +4,11 @@ require_once('lib/Validator.php');
 
 class Command
 {
-  function __construct($stdin, $stdout)
+  function __construct($stdin, $stdout, $logger)
   {
     $this->stdin = $stdin;
     $this->stdout = $stdout;
+    $this->logger = $logger;
   }
 
   function run($mode)
@@ -18,6 +19,12 @@ class Command
         return;
       }
       $this->stdout->output( FizzBuzz::check((int)$input) );
+      $this->logger->add( $input . ': ' . FizzBuzz::check((int)$input) );
+    }
+    if ( $mode === '2' ) {
+      foreach ( $this->logger->get() as $line ) {
+        $this->stdout->output($line);
+      }
     }
   }
 }

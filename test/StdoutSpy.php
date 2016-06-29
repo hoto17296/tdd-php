@@ -2,11 +2,11 @@
 
 class StdoutSpy
 {
-  private $result = null;
+  private $result = [];
 
   public function output($val)
   {
-    $this->result = $val;
+    $this->result[] = $val;
   }
 
   public function result()
