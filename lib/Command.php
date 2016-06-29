@@ -4,11 +4,12 @@ require_once('lib/Validator.php');
 
 class Command
 {
-  function __construct($stdin, $stdout, $logger)
+  function __construct($stdin, $stdout, $logger, $file)
   {
     $this->stdin = $stdin;
     $this->stdout = $stdout;
     $this->logger = $logger;
+    $this->file = $file;
   }
 
   function run($mode)
@@ -25,6 +26,9 @@ class Command
       foreach ( $this->logger->get() as $line ) {
         $this->stdout->output($line);
       }
+    }
+    if ( $mode === '3' ) {
+      $this->file->write( $this->logger->get() );
     }
   }
 }

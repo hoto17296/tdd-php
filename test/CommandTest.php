@@ -1,8 +1,8 @@
 <?php
-require('lib/Command.php');
-require('lib/Logger.php');
-require('test/StdinStub.php');
-require('test/StdoutSpy.php');
+require_once('lib/Command.php');
+require_once('lib/Logger.php');
+require_once('test/StdinStub.php');
+require_once('test/StdoutSpy.php');
 
 class CommandTest extends PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
   {
     $this->spy = new StdoutSpy();
     $this->logger = new Logger();
-    $this->command = new Command(new StdinStub('3'), $this->spy, $this->logger);
+    $this->command = new Command(new StdinStub('3'), $this->spy, $this->logger, null);
   }
 
   public function test_1を入力するとFizzBuzzが動く()
@@ -35,7 +35,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
   {
     $wrong_mode = '100';
     $spy = new StdoutSpy();
-    $command = new Command(null, $spy, null);
+    $command = new Command(null, $spy, null, null);
     $command->run($wrong_mode);
 
     $this->assertEquals([], $spy->result());
@@ -46,7 +46,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
     $wrong_input = 'a';
     $stub = new StdinStub($wrong_input);
     $spy = new StdoutSpy();
-    $command = new Command($stub, $spy, null);
+    $command = new Command($stub, $spy, null, null);
     $command->run('1');
 
     $this->assertEquals([], $spy->result());
@@ -57,7 +57,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
     // setup
     $spy = new StdoutSpy();
     $logger = new Logger();
-    $command = new Command(null, $spy, $logger);
+    $command = new Command(null, $spy, $logger, null);
     $logger->add('3: Fizz');
     $logger->add('5: Buzz');
 
