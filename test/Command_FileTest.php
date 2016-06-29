@@ -42,4 +42,19 @@ class Command_FileTest extends PHPUnit_Framework_TestCase
     // verify
     $this->assertEquals(["3: Fizz", "5: Buzz"], file($this->filename, FILE_IGNORE_NEW_LINES));
   }
+
+  public function test_4を入力すると過去の履歴をファイルから読み込める()
+  {
+    // setup
+    $spy = new StdoutSpy();
+    $file = new File($this->filename);
+    $file->write(['3: Fizz', '5: Buzz']);
+    $command = new Command(null, $spy, null, $file);
+
+    // exercise
+    $command->run('4');
+
+    // verify
+    $this->assertEquals(["3: Fizz", "5: Buzz"], $spy->result());
+  }
 }
