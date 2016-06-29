@@ -30,5 +30,10 @@ class Command
     if ( $mode === '3' ) {
       $this->file->write( $this->logger->get() );
     }
+    if ( $mode === '4' ) {
+      foreach ( $this->file->read() as $line ) {
+        $this->stdout->output($line);
+      }
+    }
   }
 }
