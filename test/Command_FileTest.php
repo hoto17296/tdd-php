@@ -40,7 +40,7 @@ class Command_FileTest extends PHPUnit_Framework_TestCase
     $command->run('3');
 
     // verify
-    $this->assertEquals(["3: Fizz", "5: Buzz"], file($this->filename, FILE_IGNORE_NEW_LINES));
+    $this->assertEquals(["3: Fizz", "5: Buzz"], $file->read());
   }
 
   public function test_4を入力すると過去の履歴をファイルから読み込める()
