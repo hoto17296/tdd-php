@@ -11,12 +11,15 @@ class Command_FileTest extends PHPUnit_Framework_TestCase
 
   protected function setUp()
   {
-    if ( file_exists($this->filename) ) {
-      unlink($this->filename);
-    }
+    $this->deleteFile();
   }
 
   protected function tearDown()
+  {
+    $this->deleteFile();
+  }
+
+  private function deleteFile()
   {
     if ( file_exists($this->filename) ) {
       unlink($this->filename);
