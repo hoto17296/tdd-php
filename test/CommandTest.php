@@ -6,23 +6,26 @@ require('test/StdoutSpy.php');
 
 class CommandTest extends PHPUnit_Framework_TestCase
 {
+  private function setUpForMode1()
+  {
+    $this->spy = new StdoutSpy();
+    $this->logger = new Logger();
+    $this->command = new Command(new StdinStub('3'), $this->spy, $this->logger);
+  }
+
   public function test_1を入力するとFizzBuzzが動く()
   {
-    $stub = new StdinStub('3');
-    $spy = new StdoutSpy();
-    $logger = new Logger();
-    $command = new Command($stub, $spy, $logger);
-    $command->run('1');
+    $this->setUpForMode1();
 
-    $this->assertEquals(['Fizz'], $spy->result());
+    $this->command->run('1');
+
+    $this->assertEquals(['Fizz'], $this->spy->result());
   }
 
   public function test_1を入力すると履歴が保存される()
   {
-    $stub = new StdinStub('3');
-    $spy = new StdoutSpy();
-    $logger = new Logger();
-    $command = new Command($stub, $spy, $logger);
+    $this->setUpForMode1();
+
     $command->run('1');
 
     $this->assertEquals(['3: Fizz'], $logger->get());
