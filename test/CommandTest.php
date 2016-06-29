@@ -8,9 +8,11 @@ class CommandTest extends PHPUnit_Framework_TestCase
 {
   private function setUpForMode1()
   {
+//    $this->mock = new StdIOMock();
+    $stub = (new StdinStub())->set('3');
     $this->spy = new StdoutSpy();
     $this->logger = new Logger();
-    $this->command = new Command(new StdinStub('3'), $this->spy, $this->logger, null);
+    $this->command = new Command($stub, $this->spy, $this->logger, null);
   }
 
   public function test_1を入力するとFizzBuzzが動く()
@@ -44,7 +46,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
   public function test_数値以外を入力すると何もしない()
   {
     $wrong_input = 'a';
-    $stub = new StdinStub($wrong_input);
+    $stub = ( new StdinStub() )->set($wrong_input);
     $spy = new StdoutSpy();
     $command = new Command($stub, $spy, null, null);
     $command->run('1');

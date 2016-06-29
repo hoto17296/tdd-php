@@ -2,13 +2,18 @@
 
 class StdinStub
 {
-  function __construct($val)
+  function __construct()
   {
-    $this->value = $val;
+    $this->values = [];
   }
 
   public function gets()
   {
-    return $this->value;
+    return array_shift( $this->values );
+  }
+
+  public function set($val) {
+    array_push($this->values, $val);
+    return $this;
   }
 }
