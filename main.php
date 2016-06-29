@@ -1,6 +1,7 @@
 <?php
 require_once 'lib/Command.php';
 require_once 'lib/Logger.php';
+require_once 'lib/File.php';
 
 class Stdin
 {
@@ -18,7 +19,8 @@ class Stdout
   }
 }
 
-$command = new Command( new Stdin(), new Stdout(), new Logger() );
+$file = new File(__DIR__ . '/log.dat');
+$command = new Command( new Stdin(), new Stdout(), new Logger(), $file );
 
 while (true) {
   $stdin = trim(fgets(STDIN));
