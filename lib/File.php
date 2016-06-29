@@ -15,6 +15,9 @@ class File
 
   public function read()
   {
+    if ( ! file_exists($this->filename) ) {
+      return [];
+    }
     return file($this->filename, FILE_IGNORE_NEW_LINES);
   }
 }
