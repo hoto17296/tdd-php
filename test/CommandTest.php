@@ -26,9 +26,9 @@ class CommandTest extends PHPUnit_Framework_TestCase
   {
     $this->setUpForMode1();
 
-    $command->run('1');
+    $this->command->run('1');
 
-    $this->assertEquals(['3: Fizz'], $logger->get());
+    $this->assertEquals(['3: Fizz'], $this->logger->get());
   }
 
   public function test_想定されていない数値を入力すると何もしない()
